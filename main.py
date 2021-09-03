@@ -21,7 +21,7 @@ quitloop = 0
 def show(key):
 
     if key == KeyCode(char='q'):
-        #cv2.destroyAllWindows()
+        cv2.destroyAllWindows()
         global quitloop
         quitloop = 1
         return False
@@ -62,8 +62,9 @@ with mss.mss() as sct:
             root.lift()
         else:
             root.attributes("-topmost", False)
+            
         Listener(on_press = show).start()
-        while True:
+        while quitloop == 0:
             im = numpy.asarray(sct.grab(mon))
             im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
             im = cv2.addWeighted(im, 0.7, im, 0.7, 0.0)
@@ -90,22 +91,22 @@ with mss.mss() as sct:
             if any(i > 1100 for i in hist) == True:
                 if detection == 1:
                     click()
-            #print(hist)
+            #print(hist)q
             if cv2imshow == 1:
                 cv2.imshow('Image', im)
                 cv2.moveWindow('Image', 100, 100)
 
             # Press "q" to quit
             
-            if quitloop == 1:
-                cv2.destroyAllWindows()
-                break
             if cv2.waitKey(25) & 0xFF == ord('q'):
                 cv2.destroyAllWindows()
                 break
 
             # Screenshot time
             time.sleep(float(scrtime))
+        else:
+            cv2.destroyAllWindows()
+            
     btn = Button(root, text = "Start", command=startfishe)
     btn.pack()
     lbl2 = Label(frame3, text = "Screenshots per second")
