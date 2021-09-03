@@ -9,4 +9,4 @@ PyARFishe is an automated fishing script for Arcane Reborn, a Roblox Experience.
 * Step 5. Cast a line, Turn on trigger, configure, press start.
 * Step 6. fishe
 ## Downsides and things to improve:
-Pressing Q does not always terminate the while loop and only seems to work on when image window is in focus. Can't currentlly find a way to get cv2.imshow to be on top of everything aswell. Code looks messy aswell.
+Pressing Q does not always terminate the while loop and only seems to work on when image window is in focus. Can't currentlly find a way to get cv2.imshow to be on top of everything aswell. Code looks messy aswell. If you switch to literally any other window prepare for your mouse to go funkey.
